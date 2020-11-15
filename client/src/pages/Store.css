@@ -1,0 +1,12 @@
+.container {
+
+    margin-left: 12vw;
+
+    /* min-width: 100vw;
+    min-height: 100vh; */
+    /* background-color: black; */
+}
+
+.btn {
+    margin: 5px
+}

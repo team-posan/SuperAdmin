@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="123" height="29" viewBox="0 0 123 29">
+  <g id="Group_10" data-name="Group 10" transform="translate(672 -562)">
+    <rect id="Rectangle_31" data-name="Rectangle 31" width="123" height="29" transform="translate(-672 562)" fill="#fff" opacity="0"/>
+    <g id="Group_6" data-name="Group 6" transform="translate(4 94)">
+      <text id="Stock" transform="translate(-636 489)" fill="#fff" font-size="15" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Stock</tspan></text>
+      <path id="warehouse_1_" data-name="warehouse (1)" d="M14.1.031H3.451L0,2.847V17.584H17.555V2.847Zm.171,5.863H3.28V4.865H14.275ZM3.28,6.923H14.275V7.951H3.28Zm0,2.057H14.275v7.575H13.1V13.271H11.2v-3.2H6.375v3.2h-1.9v3.284H3.28ZM9.3,11.911V11.1h.871v2.168H7.4V11.1h.871v.807Zm-1.9,3.2V14.3h.871v2.256H5.5V14.3h.871v.807ZM9.3,14.3h.871v.807H11.2V14.3h.871v2.256H9.3Zm7.223,2.256H15.3V3.837H2.252V16.555H1.029V3.335L3.817,1.06h9.921l2.789,2.275Z" transform="translate(-664 474.916)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

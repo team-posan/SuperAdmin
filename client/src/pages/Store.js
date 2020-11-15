@@ -1,0 +1,36 @@
+import React, { useState } from "react";
+import { Button, Table, Modal, Form } from "react-bootstrap";
+import ListStore from "../components/ListStore";
+import AddStore from "../components/addStore";
+
+function Store() {
+  const [isOpen, setIsOpen] = useState(false);
+  const showModal = () => {
+    setIsOpen(true);
+  };
+
+  const hideModal = () => {
+    setIsOpen(false);
+  };
+  return (
+    <div className="wraper">
+      <Button onClick={showModal}>Add Store</Button>
+      <Table striped bordered hover variant="light">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Store Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ListStore />
+        </tbody>
+      </Table>
+      <AddStore isOpen={isOpen} hideModal={hideModal} />
+    </div>
+  );
+}
+
+export default Store;
