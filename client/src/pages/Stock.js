@@ -4,15 +4,23 @@ import ListProduct from "../components/ListProduct";
 import AddStock from "../components/addProduct";
 import "./Stock.css";
 
+import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 function Stock() {
+  const auth = useSelector(state=>state.loginReducer)
+  
   const [isOpen, setIsOpen] = useState(false);
   const showModal = () => {
     setIsOpen(true);
   };
-
+  
   const hideModal = () => {
     setIsOpen(false);
   };
+
+  if(!auth.loginStatus) return <Redirect to={'/login'}/>
+  
   return (
     <div className="wraper">
       <Button onClick={showModal}>Add Product</Button>

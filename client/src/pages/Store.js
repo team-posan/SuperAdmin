@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import { Button, Table, Modal, Form } from "react-bootstrap";
 import ListStore from "../components/ListStore";
 import AddStore from "../components/addStore";
+import { useSelector } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 function Store() {
+  const auth = useSelector(state=>state.loginReducer)
+  
   const [isOpen, setIsOpen] = useState(false);
   const showModal = () => {
     setIsOpen(true);
   };
-
+  
   const hideModal = () => {
     setIsOpen(false);
   };
+  
+  if(!auth.loginStatus) return <Redirect to={'/login'}/>
+
   return (
     <div className="wraper">
       <Button onClick={showModal}>Add Store</Button>
