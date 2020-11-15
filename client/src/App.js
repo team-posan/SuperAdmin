@@ -3,8 +3,27 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Dashboard, Stock, Store, Login } from "./pages/index";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { keepLoginAction, logoutAction } from './store/action/Login-action'
 
 function App() {
+
+  const dispatch = useDispatch()
+  
+  const auth = useSelector(state=>state.loginReducer)
+
+  useEffect(()=>{
+    const access_token = localStorage.getItem('access_token')
+    if(access_token){
+      dispatch(keepLoginAction())
+    }
+  },[])
+
+  const onLogoutClick=()=>{
+    dispatch(logoutAction())
+  }
+
   return (
     <Router>
       <div className="App">
@@ -14,13 +33,22 @@ function App() {
         <div className="r-side">
           <div className="r-side-header">
             Header
+            {
+              auth.loginStatus?
             <Link to="/login">
               <div className="logout-btn">
-                <button>Logout</button>
+                <button className='btn btn-info' onClick={onLogoutClick}>Logout</button>
               </div>
             </Link>
+            :
+            <Link to="/login">
+              <div className="logout-btn">
+                <button className='btn btn-info'>Login</button>
+              </div>
+            </Link>
+            }
           </div>
-          <div className="content">
+          <div className="content mt-5" >
             <Switch>
               <Route path="/Dashboard" component={Dashboard} />
               <Route path="/stock" component={Stock} />

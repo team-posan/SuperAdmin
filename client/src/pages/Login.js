@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import { Button, Table, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { setUser } from "../store/action/Login-action";
+import { Redirect } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { loginAction } from "../store/action/Login-action";
 
 export default function () {
   const [data, setData] = useState();
-  //   const dispatch = useDispatch();
-  const handleSubmit = () => {
-    // dispatch(setUser(data));
+    const dispatch = useDispatch();
+  const auth = useSelector(state=>state.loginReducer)
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(loginAction(data.username,data.password));
   };
+
+
   const handleInput = (e) => {
     const { name, value } = e.target;
     setData({
@@ -16,11 +23,14 @@ export default function () {
       [name]: value,
     });
   };
+
+  if(auth.loginStatus) return <Redirect to={'/dashboard'}/>
+
   return (
     <div>
       <div>LoginPage</div>
       <div>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={(e)=>handleSubmit(e)}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control

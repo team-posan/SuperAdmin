@@ -1,14 +1,17 @@
 import { ADMIN_LOGIN } from "../action";
+
 const initialState = {
-  login: { username: "", password: "" },
+  loginStatus:false,
+  loginError:false
 };
 
 function Reducer(state = initialState, { type, payload }) {
   switch (type) {
     case ADMIN_LOGIN:
-      return { ...state, login: payload };
+      return { ...state, loginStatus:true };
+    case 'LOGOUT_SUCCESS' :
+      return {...state, loginStatus:false}
     default:
-      // console.log(`ini di default reducer login`);
       return state;
   }
 }
