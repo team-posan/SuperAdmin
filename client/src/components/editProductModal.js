@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { Button, Table, Modal, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addProduct } from "../store/action/Product-action";
+import { editProduct } from "../store/action/Product-action";
 
-function AddStock(props) {
+function EditStock(props) {
   const { isOpen, hideModal, data } = props;
-  const [dataAdd, setDataAdd] = useState({});
+
+  const [editData, setEditData] = useState(data);
+  console.log(editData.id, "ini edit di addProduct modal");
 
   const dispatch = useDispatch();
 
-  console.log(dataAdd);
+  console.log(editData);
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
-    setDataAdd({ ...dataAdd, [name]: value });
+    console.log(value);
+    setEditData({ ...editData, [name]: value });
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(addProduct(dataAdd));
+    dispatch(editProduct(editData));
     hideModal();
   };
   return (
@@ -31,6 +34,7 @@ function AddStock(props) {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Product Name</Form.Label>
               <Form.Control
+                defaultValue={editData.product_name}
                 type="text"
                 placeholder="Insert Product Name"
                 name="product_name"
@@ -109,4 +113,4 @@ function AddStock(props) {
   );
 }
 
-export default AddStock;
+export default EditStock;

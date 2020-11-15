@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import { Button, Table, Modal, Form } from "react-bootstrap";
-import { useDispatch } from 'react-redux'
-import { editStore } from '../store/action/Store-action'
+import { useDispatch } from "react-redux";
+import { editStore } from "../store/action/Store-action";
 
 function EditStoreModal(props) {
   const { isOpen, hideModal, dataEdit } = props;
 
-  const [ editData, setDataEdit ] = useState(dataEdit)
+  const [editData, setDataEdit] = useState(dataEdit);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const onChangeHandler=(e)=>{
-    e.preventDefault()
-    const { value, name } = e.target
-    setDataEdit({...editData,[name]:value})
-  }
+  const onChangeHandler = (e) => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setDataEdit({ ...editData, [name]: value });
+  };
 
-  const onSubmitHandler=(e)=>{
-    e.preventDefault()
-    dispatch(editStore(editData))
-    hideModal()
-  }
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    dispatch(editStore(editData));
+    hideModal();
+  };
 
   return (
     <div>
@@ -29,10 +29,16 @@ function EditStoreModal(props) {
           <Modal.Title>Edit Store Store</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={(e)=>onSubmitHandler(e)}>
+          <Form onSubmit={(e) => onSubmitHandler(e)}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Store Name</Form.Label>
-              <Form.Control type="text" placeholder="Insert Store Name" name="store_name" defaultValue={editData.store_name} onChange={(e)=>onChangeHandler(e)}/>
+              <Form.Control
+                type="text"
+                placeholder="Insert Store Name"
+                name="store_name"
+                defaultValue={editData.store_name}
+                onChange={(e) => onChangeHandler(e)}
+              />
               <Form.Text className="text-muted">
                 Make sure the shop name is correct.
               </Form.Text>
@@ -40,7 +46,13 @@ function EditStoreModal(props) {
 
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Store Address</Form.Label>
-              <Form.Control type="text" placeholder="Insert Store Address" name="store_address" defaultValue={editData.store_address} onChange={(e)=>onChangeHandler(e)}/>
+              <Form.Control
+                type="text"
+                placeholder="Insert Store Address"
+                name="store_address"
+                defaultValue={editData.store_address}
+                onChange={(e) => onChangeHandler(e)}
+              />
               <Form.Text className="text-muted">
                 make sure the store address is correct.
               </Form.Text>

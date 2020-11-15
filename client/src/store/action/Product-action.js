@@ -1,31 +1,113 @@
-import { FETCH_PRODUCT } from ".";
+import axios from "axios";
 
-export const setProduct = (payload) => {
-  return {
-    type: FETCH_PRODUCT,
-    payload,
-  };
-};
+const baseUrlProduct = "http://localhost:5000/product";
 
-export const fetchdDataProduct = () => {
+export const fetchProduct = () => {
   return (dispatch) => {
-    fetch(`http://localhost:5000/product`)
-      .then((res) => res.json())
-      .then((result) => {
-        dispatch(setProduct(result));
+    axios
+      .get(baseUrlProduct, {
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+      })
+      .then(({ data }) => {
+        // console.log(data, "data");
+        dispatch({ type: "FETCH_PRODUCT", payload: data });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };
 
-export const setProduct = (payload) => {
+export const addProduct = (dataProduct) => {
   return (dispatch) => {
-    fetch(`http://localhost:5000/product`, {
-      method: "POST",
-      data: {},
-    })
-      .then((res) => res.json())
+    const { product_name, price, image_url, stock, StoreId } = dataProduct;
+    axios
+      .post(
+        baseUrlProduct,
+        {
+          product_name,
+          price,
+          image_url,
+          stock,
+          StoreId,
+        },
+        {
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        }
+      )
+      .then(({ data }) => {
+        dispatch({
+          type: "ADD_PRODUCT",
+          payload: {
+            product_name,
+            price,
+            image_url,
+            stock,
+            StoreId,
+            id: data.id,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const editProduct = (dataEdit) => {
+  return (dispatch) => {
+    const { product_name, price, image_url, stock, StoreId, id } = dataEdit;
+    axios
+      .patch(
+        baseUrlProduct + "/" + id,
+        { product_name, price, image_url, stock, StoreId },
+        {
+          headers: {
+            access_token: localStorage.getItem("access_token"),
+          },
+        }
+      )
       .then((result) => {
-        dispatch(setProduct(result));
+        // console.log(result);
+        dispatch({
+          type: "EDIT_STORE",
+          payload: {
+            product_name,
+            price,
+            image_url,
+            stock,
+            StoreId,
+            id,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+export const deleteProduct = (dataDelete) => {
+  console.log(dataDelete, "dataDelete");
+  return (dispatch) => {
+    axios
+      .delete(baseUrlProduct + "/" + dataDelete.id, {
+        headers: {
+          access_token: localStorage.getItem("access_token"),
+        },
+      })
+      .then((result) => {
+        console.log(result);
+        dispatch({
+          type: "DELETE_PRODUCT",
+          payload: dataDelete,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 };

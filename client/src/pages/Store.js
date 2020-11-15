@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table, Modal, Form } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import ListStore from "../components/ListStore";
 import AddStore from "../components/addStore";
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { fetchStore } from '../store/action/Store-action'
+import { useSelector, useDispatch } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { fetchStore } from "../store/action/Store-action";
 
 function Store() {
-  const auth = useSelector(state=>state.loginReducer)
-  const storeReducer = useSelector(state=>state.storeReducer)
+  const auth = useSelector((state) => state.loginReducer);
+  const storeReducer = useSelector((state) => state.storeReducer);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const [dataStore, setDataStore ] = useState([])
+  const [dataStore, setDataStore] = useState([]);
 
-  useEffect(()=>{
-    dispatch(fetchStore())
-    setDataStore(storeReducer)
-  },[])
-  
+  useEffect(() => {
+    dispatch(fetchStore());
+    setDataStore(storeReducer);
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const showModal = () => {
     setIsOpen(true);
   };
-  
+
   const hideModal = () => {
     setIsOpen(false);
   };
-  
-  if(!auth.loginStatus) return <Redirect to={'/login'}/>
 
-  if(storeReducer.loadingStore) return <div>Loading...</div>
+  if (!auth.loginStatus) return <Redirect to={"/login"} />;
+
+  if (storeReducer.loadingStore) return <div>Loading...</div>;
   return (
     <div className="wraper">
       <Button onClick={showModal}>Add Store</Button>
@@ -44,11 +44,9 @@ function Store() {
           </tr>
         </thead>
         <tbody>
-          {
-            storeReducer.dataStore.map((val,index)=>{
-              return <ListStore key={index} store={val}/>
-            })
-          }
+          {storeReducer.dataStore.map((val, index) => {
+            return <ListStore key={index} store={val} />;
+          })}
         </tbody>
       </Table>
       <AddStore isOpen={isOpen} hideModal={hideModal} />
