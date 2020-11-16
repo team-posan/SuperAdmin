@@ -53,7 +53,7 @@ function AddStore({ isOpen, hideModal }) {
               variant="primary"
               type=""
               className="btn"
-              onClick={(e)=>hideModal}
+              onClick={hideModal}
             >
               Cancel
             </Button>
