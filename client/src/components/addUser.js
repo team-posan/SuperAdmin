@@ -26,7 +26,7 @@ function AddUser({ isOpen, hideModal }) {
         e.preventDefault()
         const { value, name } = e.target
         console.log(value);
-        
+
 
         setDataAdd({ ...dataAdd, [name]: value })
     }
@@ -62,7 +62,7 @@ function AddUser({ isOpen, hideModal }) {
 
                         <Form.Group as={Col} controlId="formGridStore">
                             <Form.Label>Store</Form.Label>
-                            <Form.Control as="select" defaultValue={} name="store">
+                            <Form.Control as="select" defaultValue="Choose..." name="store">
                                 {storeReducer.dataStore.map((store, i) => {
                                     return <Option store={store} key={i} />
                                 })}
