@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Dashboard, Stock, Store, Login } from "./pages/index";
+import { Dashboard, Stock, Store, Login, User } from "./pages/index";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
@@ -55,6 +55,7 @@ function App() {
               <Route path="/store" component={Store} />
               <Route path="/login" exact component={Login} />
               <Route path="/log" component={Store} />
+              <Route path="/user" component={User} />
             </Switch>
           </div>
         </div>
