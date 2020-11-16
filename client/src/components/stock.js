@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 
-function stocks({ isOpenEdit, hideModalEdit }) {
+function Stocks({ isOpenEdit, hideModalEdit }) {
   return (
     <div>
       <Modal show={isOpenEdit} onHide={hideModalEdit}>
@@ -36,4 +36,4 @@ function stocks({ isOpenEdit, hideModalEdit }) {
   );
 }
 
-export default stocks;
+export default Stocks;
