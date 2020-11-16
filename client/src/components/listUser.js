@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import EditModal from "../components/editStoreModal";
+import EditModal from "../components/editUserModal";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../store/action/User-action";
 
@@ -12,7 +12,12 @@ function ListUser(props) {
         username,
         password,
         StoreId,
-         id } = props.user;
+        role,
+        id,
+        phone_number 
+        } = props.user;
+
+         console.log(props.user)
 
     const showModal = () => {
         setIsOpen(true);
@@ -49,17 +54,29 @@ function ListUser(props) {
     return (
         <tr>
             <th scope="row">{id}</th>
+            <td>{role}</td>
+            <td>{StoreId}</td>
             <td>{username}</td>
-            <td>{password}</td>
-            <td>
-                <button onClick={showModal} className="btn btn-success">
-                    Edit
-        </button>
-                <button onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
-                    Delete
-        </button>
-            </td>
-            <EditModal isOpen={isOpen} hideModal={hideModal} dataEdit={props.store} />
+            <td>{phone_number}</td>
+            <td><center>
+                {
+                    role === 'customer' ?
+                   null
+                    :
+                    <button onClick={showModal} className="btn btn-success">
+                        Edit
+                    </button>
+                }
+                {
+                    role !== 'admin' ?
+                    <button onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
+                        Delete
+                    </button>
+                    :
+                    null
+                }
+            </center></td>
+            <EditModal isOpen={isOpen} hideModal={hideModal} dataEdit={props.user} />
         </tr>
     );
 }
