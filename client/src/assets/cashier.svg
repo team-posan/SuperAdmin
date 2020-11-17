@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="123" height="29" viewBox="0 0 123 29">
+  <g id="cashier" transform="translate(672 -646)">
+    <g id="Group_14" data-name="Group 14" transform="translate(0 84)">
+      <rect id="Rectangle_31" data-name="Rectangle 31" width="123" height="29" transform="translate(-672 562)" fill="#fff" opacity="0"/>
+      <text id="Cashier-2" data-name="Cashier" transform="translate(-632 583)" fill="#fff" font-size="15" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Cashier</tspan></text>
+    </g>
+    <g id="cash-machine" transform="translate(-665.612 613.584)">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="0.5" cy="0.5" r="0.5" transform="translate(12.612 55.416)" fill="#fff"/>
+      <path id="Path_9" data-name="Path 9" d="M273.687,196h-7.174a.512.512,0,0,0-.512.512v3.075a.512.512,0,0,0,.512.512h7.174a.512.512,0,0,0,.512-.512v-3.075A.512.512,0,0,0,273.687,196Zm-.512,3.075h-6.149v-2.05h6.149Z" transform="translate(-252.369 -151.801)" fill="#fff"/>
+      <path id="Path_10" data-name="Path 10" d="M87.537,336H86.512a.512.512,0,0,0,0,1.025h1.025a.512.512,0,1,0,0-1.025Z" transform="translate(-81.593 -284.626)" fill="#fff"/>
+      <path id="Path_11" data-name="Path 11" d="M147.537,336h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,1,0,0-1.025Z" transform="translate(-138.518 -284.626)" fill="#fff"/>
+      <path id="Path_12" data-name="Path 12" d="M207.537,336h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-195.443 -284.626)" fill="#fff"/>
+      <path id="Path_13" data-name="Path 13" d="M267.537,296h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-252.369 -246.676)" fill="#fff"/>
+      <path id="Path_14" data-name="Path 14" d="M327.537,296h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-309.294 -246.676)" fill="#fff"/>
+      <path id="Path_15" data-name="Path 15" d="M387.537,296h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-366.219 -246.676)" fill="#fff"/>
+      <path id="Path_16" data-name="Path 16" d="M87.537,296H86.512a.512.512,0,0,0,0,1.025h1.025a.512.512,0,1,0,0-1.025Z" transform="translate(-81.593 -246.676)" fill="#fff"/>
+      <path id="Path_17" data-name="Path 17" d="M147.537,296h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,1,0,0-1.025Z" transform="translate(-138.518 -246.676)" fill="#fff"/>
+      <path id="Path_18" data-name="Path 18" d="M207.537,296h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-195.443 -246.676)" fill="#fff"/>
+      <path id="Path_19" data-name="Path 19" d="M267.537,336h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-252.369 -284.626)" fill="#fff"/>
+      <path id="Path_20" data-name="Path 20" d="M327.537,336h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-309.294 -284.626)" fill="#fff"/>
+      <path id="Path_21" data-name="Path 21" d="M387.537,336h-1.025a.512.512,0,0,0,0,1.025h1.025a.512.512,0,0,0,0-1.025Z" transform="translate(-366.219 -284.626)" fill="#fff"/>
+      <circle id="Ellipse_2" data-name="Ellipse 2" cx="0.5" cy="0.5" r="0.5" transform="translate(12.612 57.416)" fill="#fff"/>
+      <path id="Path_22" data-name="Path 22" d="M25.725,53.423h-.864l-.983-10.808a.512.512,0,0,0-.51-.466H19.781V41.125h1.537a.512.512,0,0,0,.512-.512v-4.1A.512.512,0,0,0,21.318,36H15.169a.512.512,0,0,0-.512.512v4.1a.512.512,0,0,0,.512.512h1.537v1.025H11.581V39.587a.512.512,0,0,0-.7-.476l-1.091.436L8.7,39.111a.512.512,0,0,0-.381,0l-1.091.436-1.091-.436a.512.512,0,0,0-.7.476v2.562H2.87a.512.512,0,0,0-.51.466L1.377,53.423H.512A.512.512,0,0,0,0,53.936v4.1a.512.512,0,0,0,.512.512h10.3a.512.512,0,1,0,0-1.025H1.025V54.448H25.213v3.075H15.425a.512.512,0,1,0,0,1.025h10.3a.512.512,0,0,0,.512-.512v-4.1A.512.512,0,0,0,25.725,53.423Zm-10.044-16.4h5.125V40.1H15.681Zm2.05,4.1h1.025v1.025H17.731Zm-11.274-.78.578.231a.512.512,0,0,0,.381,0l1.091-.436,1.091.436a.512.512,0,0,0,.381,0l.578-.231v6.93h-4.1ZM2.406,53.423l.932-10.249H5.432v4.1H4.92a.512.512,0,1,0,0,1.025h7.174a.512.512,0,0,0,0-1.025h-.512v-4.1H22.9l.932,10.249Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>

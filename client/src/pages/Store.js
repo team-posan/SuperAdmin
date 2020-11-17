@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Table, Spin } from "react-bootstrap";
 import ListStore from "../components/ListStore";
 import AddStore from "../components/addStore";
 import { useSelector, useDispatch } from "react-redux";
@@ -30,7 +30,7 @@ function Store() {
 
   if (!auth.loginStatus) return <Redirect to={"/login"} />;
 
-  if (storeReducer.loadingStore) return <div>Loading...</div>;
+  if (storeReducer.loadingStore) return <Spinner animation="border" />;
   return (
     <div className="wraper">
       <Button onClick={showModal}>Add Store</Button>

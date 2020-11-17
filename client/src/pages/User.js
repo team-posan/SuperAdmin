@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Spinner, Table } from "react-bootstrap";
 import ListUser from "../components/listUser";
 import AddUser from "../components/addUser";
 import { useSelector, useDispatch } from "react-redux";
@@ -31,7 +31,9 @@ function User() {
     
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
     
-    if (userReducer.loadingUser) return <div>Loading...</div>;
+    if (userReducer.loadingUser) return <Spinner animation="border" role="status">
+    <span className="sr-only">Loading...</span>
+  </Spinner>
     return (
         <div className="wraper">
             <Button onClick={showModal}>Add User</Button>

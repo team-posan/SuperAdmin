@@ -3,8 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
     
     /* background-color: black; */
+}
+.card-txt{
+    margin-left: 10px;
 }
 .icon-card{
     display: flex;

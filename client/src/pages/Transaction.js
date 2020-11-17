@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Table } from "react-bootstrap";
+import { Table, Spinner } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { fetchLog } from "../store/action/Log-action";
@@ -16,7 +16,7 @@ const Log = () => {
     const [dataLog, setDataLog] = useState([]);
 
     useEffect(() => {
-        console.log('params' ,params)
+        console.log('params', params)
         dispatch(fetchLog());
         setDataLog(logReducer);
     }, []);
@@ -24,7 +24,7 @@ const Log = () => {
     console.log(logReducer, 'kjjhjh');
 
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
-    if (logReducer.loadingLog) return <div>Loading...</div>;
+    if (logReducer.loadingLog) return <Spinner animation="border" />;
     return (
         <div>
             <Table striped bordered hover variant="light">

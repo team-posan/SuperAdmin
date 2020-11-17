@@ -5,11 +5,15 @@ import Store from "../assets/Group 9.svg";
 import Stock from "../assets/Group 10.svg";
 import List from "../assets/Group 11.svg";
 import { Link } from "react-router-dom";
+import Cashier from "../assets/cashier.svg"
+import Logo from "../assets/logo.svg"
 
 function Navbar() {
   return (
     <div className="nav-wrap">
-      <div className="nav-logo">POSAN</div>
+      <div className="nav-logo">
+        <img src={Logo} width="70%"/>
+      </div>
       <div className="nav-link">
         <Link to="/dashboard">
           <div className="link">
@@ -28,13 +32,7 @@ function Navbar() {
         </Link>
         <Link to="/user">
           <div className="link">
-            {/* <img src={Store} className="icon" /> */}
-            User
-          </div>
-        </Link>
-        <Link to='/user'>
-          <div className="link">
-            <img src={List} className="icon" />
+            <img src={Cashier} className="icon" />
           </div>
         </Link>
         <Link to='/log'>

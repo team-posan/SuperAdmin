@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
+import { Col, Container, Row, Table } from 'react-bootstrap'
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProduct } from "../store/action/Product-action"
 import { fetchStore } from "../store/action/Store-action"
 import { fetchLog } from "../store/action/Log-action"
-import { Col, Container, Row, Table } from 'react-bootstrap'
 import IncomeIcon from "../assets/income-icon.svg"
+import Store from "../assets/store.svg"
+
 import ListStock from "../components/listStockHabis"
 
 function Dashboard() {
@@ -23,6 +25,16 @@ function Dashboard() {
   const [dataStore, setDataStore] = useState([]);
 
   useEffect(() => {
+    dispatch(fetchProduct())
+  }, [])
+  useEffect(() => {
+    dispatch(fetchStore())
+  }, [])
+  useEffect(() => {
+    dispatch(fetchLog())
+  }, [])
+
+  useEffect(() => {
     let value = 0
     if (!logReducer.loadingLog) {
       logReducer.dataLog.carts.map(cart => {
@@ -34,15 +46,6 @@ function Dashboard() {
   }, [logReducer]);
   // console.log(logReducer.dataLog.carts, 'ini dashboard');
 
-  useEffect(() => {
-    dispatch(fetchProduct())
-  }, [])
-  useEffect(() => {
-    dispatch(fetchStore())
-  }, [])
-  useEffect(() => {
-    dispatch(fetchLog())
-  }, [])
 
 
 
@@ -71,36 +74,48 @@ function Dashboard() {
   return (
     <div className="wraper">
       <Container>
-        <div className="card">
-          <Row>
-            <Col className="icon-card">
-              <div>
-                <img src={IncomeIcon} width="80" />
-              </div>
-              <div>
-                <p>
-                  Total transaction
+        <Row>
+          <Col>
+            <div className="card">
+              <Row>
+                <Col className="icon-card">
+                  <div>
+                    <img src={IncomeIcon} width="80" />
+                  </div>
+                  <div className="card-txt">
+                    <h4>
+                      {dataDashboard}
+                    </h4>
+                    <p>
+                      Total transaction
                 </p>
-                {dataDashboard}
-              </div>
-            </Col>
-          </Row>
-        </div>
-        <div className="card">
-          <Row>
-            <Col className="icon-card">
-              <div>
-                <img src={IncomeIcon} width="80" />
-              </div>
-              <div>
-                <p>
-                  Total Store
-                </p>
-                {dataStore}
-              </div>
-            </Col>
-          </Row>
-        </div>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+          <Col>
+            <div className="card">
+              <Row>
+                <Col className="icon-card">
+                  <div>
+                    <img src={Store} width="80" />
+                  </div>
+                  <div className="card-txt">
+                    <h4>
+                      {dataStore}
+                    </h4>
+                    <p>
+                      Total Store
+                    </p>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Col>
+        </Row>
+
+
         <div className="dsb-top">
           Stock yang mau habis
           <Table striped bordered hover responsive>
