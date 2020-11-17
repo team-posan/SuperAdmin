@@ -10,12 +10,6 @@ function EditStock(props) {
   console.log(editData.id, "ini edit di addProduct modal");
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // console.log(editDa)
-  }, [])
-
-  // console.log('>>>>>>', editData);
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;

@@ -33,7 +33,6 @@ function ListProduct(props) {
         if (result.value) {
           dispatch(deleteProduct(props.product));
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          dispatch(fetchProduct());
         } else {
           console.log("gajadi delete");
         }
