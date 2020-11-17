@@ -11,7 +11,7 @@ function EditStock(props) {
 
   const dispatch = useDispatch();
 
-  console.log(editData);
+  // console.log(editData);
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;

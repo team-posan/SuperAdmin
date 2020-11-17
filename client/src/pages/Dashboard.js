@@ -3,8 +3,13 @@ import "./Dashboard.css";
 import { Redirect } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
+import {fetchProduct} from "../store/action/Product-action"
+import {fetchStore} from "../store/action/Store-action"
+import {fetchLog} from "../store/action/Log-action"
+
 
 function Dashboard() {
+  const dispatch = useDispatch()
   const auth = useSelector((state) => state.loginReducer);
   const productReducer = useSelector((state) => state.productReducer);
   const storeReducer = useSelector((state) => state.storeReducer);
@@ -27,6 +32,18 @@ function Dashboard() {
     setDataDashboard(formatted)
   }, [logReducer]);
   // console.log(logReducer.dataLog.carts, 'ini dashboard');
+
+  useEffect(() => {
+    dispatch(fetchProduct())
+  },[])
+  useEffect(() => {
+    dispatch(fetchStore())
+  },[])
+  useEffect(() => {
+    dispatch(fetchLog())
+  },[])
+
+
 
   useEffect(() => {
     const filteredProduct = productReducer.dataProduct.filter(product => product.stock < 150)
