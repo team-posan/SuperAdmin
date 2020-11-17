@@ -59,7 +59,7 @@ function ListStore(props) {
       <td>
       <button onClick={showtransaction} className="btn btn-success">
           See All transaction
-        </button>
+      </button>
       </td>
       <td>
         <button onClick={showModal} className="btn btn-success">
