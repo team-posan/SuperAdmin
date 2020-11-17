@@ -10,7 +10,7 @@ function ListStore(props) {
         <tr>
             <th scope="row">{id}</th>
             <td>{Product.product_name}</td>
-            <td>{Product.StoreId}</td>
+            <td>{UserId}</td>
             <td>{quantity}</td>
             <td>{payment_status}</td>
         </tr>

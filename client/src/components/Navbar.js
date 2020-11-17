@@ -26,6 +26,12 @@ function Navbar() {
             <img src={Store} className="icon" />
           </div>
         </Link>
+        <Link to="/user">
+          <div className="link">
+            {/* <img src={Store} className="icon" /> */}
+            User
+          </div>
+        </Link>
         <Link to='/user'>
           <div className="link">
             <img src={List} className="icon" />

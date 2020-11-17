@@ -18,7 +18,6 @@ function User() {
         dispatch(fetchUser());
         setDatauser(userReducer);
     }, []);
-    console.log(datauser, 'datauser');
     
     const [isOpen, setIsOpen] = useState(false);
     const showModal = () => {
@@ -28,6 +27,7 @@ function User() {
     const hideModal = () => {
         setIsOpen(false);
     };
+
     
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
     
@@ -39,17 +39,24 @@ function User() {
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">user Name</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Store</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Phone Number</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {userReducer.datauser.map((val, index) => {
-                        return <ListUser key={index} store={val} />;
-                    })} */}
+                    {userReducer.dataUser.length > 0 ?
+                    userReducer.dataUser.map((val, index) => {
+                        return <ListUser key={index} user={val} />;
+                    })
+                    :
+                    null
+                }
                 </tbody>
             </Table>
-            <pre>{JSON.stringify(datauser, null, 2)}</pre>
+            {/* <pre>{JSON.stringify(datauser, null, 2)}</pre> */}
             <AddUser isOpen={isOpen} hideModal={hideModal} />
         </div>
     );

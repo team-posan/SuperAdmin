@@ -18,14 +18,6 @@ function ListProduct(props) {
     setIsOpen(false);
   };
 
-  const [isOpenEdit, setIsOpenEdit] = useState(false);
-  const showModalEdit = () => {
-    setIsOpenEdit(true);
-  };
-
-  const hideModalEdit = () => {
-    setIsOpenEdit(false);
-  };
   const onDeleteClick = (e) => {
     e.preventDefault();
     Swal.fire({
@@ -65,10 +57,10 @@ function ListProduct(props) {
           Delete
         </button>
       </td>
-      <Modal isOpen={isOpen} hideModal={hideModal} />
+      {/* <Modal isOpen={isOpen} hideModal={hideModal} /> */}
       <EditProduct
-        isOpenEdit={isOpenEdit}
-        hideModalEdit={hideModalEdit}
+        isOpen={isOpen}
+        hideModal={hideModal}
         data={props.product}
       />
     </tr>
