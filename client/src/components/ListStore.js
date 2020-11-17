@@ -3,10 +3,12 @@ import Swal from "sweetalert2";
 import EditModal from "../components/editStoreModal";
 import { useDispatch } from "react-redux";
 import { deleteStore } from "../store/action/Store-action";
+import { useHistory } from "react-router";
 
 function ListStore(props) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const history = useHistory()
   const dispatch = useDispatch();
   const { store_name, store_address, id } = props.store;
 
@@ -17,6 +19,13 @@ function ListStore(props) {
   const hideModal = () => {
     setIsOpen(false);
   };
+
+  const showtransaction = () => {
+    const StoreId = id
+    history.push(`${id}/transaction`, {
+      store: props.store
+    })
+  }
 
   const onDeleteClick = (e) => {
     e.preventDefault();
@@ -47,6 +56,11 @@ function ListStore(props) {
       <th scope="row">{id}</th>
       <td>{store_name}</td>
       <td>{store_address}</td>
+      <td>
+      <button onClick={showtransaction} className="btn btn-success">
+          See All transaction
+        </button>
+      </td>
       <td>
         <button onClick={showModal} className="btn btn-success">
           Edit

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Table, Modal, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { editProduct } from "../store/action/Product-action";
@@ -11,13 +11,18 @@ function EditStock(props) {
 
   const dispatch = useDispatch();
 
-  console.log(editData);
+  useEffect(() => {
+    // console.log(editDa)
+  }, [])
+
+  // console.log('>>>>>>', editData);
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
-    console.log(value);
+    // console.log(value);
     setEditData({ ...editData, [name]: value });
   };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(editProduct(editData));
@@ -51,6 +56,7 @@ function EditStock(props) {
                 type="number"
                 placeholder="Insert Product Price"
                 name="price"
+                defaultValue={editData.price}
                 onChange={(e) => onChangeHandler(e)}
               />
               <Form.Text className="text-muted">
@@ -61,6 +67,7 @@ function EditStock(props) {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Img URL</Form.Label>
               <Form.Control
+                defaultValue={editData.image_url}
                 type="text"
                 placeholder="Insert Image Url"
                 name="image_url"
@@ -72,6 +79,7 @@ function EditStock(props) {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Stock</Form.Label>
               <Form.Control
+                defaultValue={editData.stock}
                 type="number"
                 placeholder="Insert Product Stock"
                 name="stock"
@@ -85,6 +93,7 @@ function EditStock(props) {
             <Form.Group controlId="formBasicEmail">
               <Form.Label>StoreId</Form.Label>
               <Form.Control
+                defaultValue={editData.StoreId}
                 type="number"
                 placeholder="Insert Product Stock"
                 name="StoreId"
