@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import { Redirect } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
-import {fetchProduct} from "../store/action/Product-action"
-import {fetchStore} from "../store/action/Store-action"
-import {fetchLog} from "../store/action/Log-action"
-
+import { fetchProduct } from "../store/action/Product-action"
+import { fetchStore } from "../store/action/Store-action"
+import { fetchLog } from "../store/action/Log-action"
+import { Col, Container, Row, Table } from 'react-bootstrap'
+import IncomeIcon from "../assets/income-icon.svg"
+import ListStock from "../components/listStockHabis"
 
 function Dashboard() {
   const dispatch = useDispatch()
@@ -35,13 +36,13 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(fetchProduct())
-  },[])
+  }, [])
   useEffect(() => {
     dispatch(fetchStore())
-  },[])
+  }, [])
   useEffect(() => {
     dispatch(fetchLog())
-  },[])
+  }, [])
 
 
 
@@ -69,15 +70,59 @@ function Dashboard() {
 
   return (
     <div className="wraper">
-      <div className="dsb-top">
-        <h1>total transaction</h1>
-        <h4>{dataDashboard}</h4>
-        {/* {JSON.stringify(dataDashboard, null, 2)} */}
-      </div>
-      <div className="dsb-mdl">{JSON.stringify(dataProduct, null, 2)}</div>
+      <Container>
+        <div className="card">
+          <Row>
+            <Col className="icon-card">
+              <div>
+                <img src={IncomeIcon} width="80" />
+              </div>
+              <div>
+                <p>
+                  Total transaction
+                </p>
+                {dataDashboard}
+              </div>
+            </Col>
+          </Row>
+        </div>
+        <div className="card">
+          <Row>
+            <Col className="icon-card">
+              <div>
+                <img src={IncomeIcon} width="80" />
+              </div>
+              <div>
+                <p>
+                  Total Store
+                </p>
+                {dataStore}
+              </div>
+            </Col>
+          </Row>
+        </div>
+        <div className="dsb-top">
+          Stock yang mau habis
+          <Table striped bordered hover responsive>
+            <thead className="thead-light">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Store</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataProduct.map((stock, i) => {
+                return <ListStock stock={stock} key={i} />;
+              })}
+            </tbody>
+          </Table>
+        </div>
+      </Container>
+      {/* <div className="dsb-mdl">{JSON.stringify(dataProduct, null, 2)}</div> */}
       <div className="dsb-btm">
-        <h1>Total Store</h1>
-        {JSON.stringify(dataStore, null, 2)}</div>
+      </div>
     </div>
   );
 }
