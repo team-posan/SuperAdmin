@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Dashboard, Stock, Store, Login, User, Log } from "./pages/index";
+import Transaction from './pages/Transaction'
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux'
@@ -50,12 +51,13 @@ function App() {
           </div>
           <div className="content mt-5" >
             <Switch>
-              <Route path="/Dashboard" component={Dashboard} />
-              <Route path="/stock" component={Stock} />
-              <Route path="/store" component={Store} />
-              <Route path="/login" exact component={Login} />
-              <Route path="/user" component={User} />
-              <Route path="/log" component={Log} />
+              <Route path="/:StoreId/transaction" component={Transaction} />
+              <Route exact path="/Dashboard" component={Dashboard} />
+              <Route exact path="/stock" component={Stock} />
+              <Route exact path="/store" component={Store} />
+              <Route exact path="/login" exact component={Login} />
+              <Route exact path="/user" component={User} />
+              <Route exact path="/log" component={Log} />
             </Switch>
           </div>
         </div>
