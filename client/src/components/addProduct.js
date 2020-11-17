@@ -1,13 +1,26 @@
-import React, { useState } from "react";
-import { Button, Table, Modal, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { Button, Table, Modal, Form, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../store/action/Product-action";
+import { fetchStore } from '../store/action/Store-action'
+import  { Redirect } from 'react-router-dom'
+import Option from "../components/option"
+
 
 function AddStock(props) {
   const { isOpen, hideModal, data } = props;
   const [dataAdd, setDataAdd] = useState({});
 
+  const storeReducer = useSelector((state) => state.storeReducer);
+  const auth = useSelector((state) => state.loginReducer);
+  
+
+
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchStore())
+  },[])
 
   console.log(dataAdd);
   const onChangeHandler = (e) => {
@@ -20,6 +33,10 @@ function AddStock(props) {
     dispatch(addProduct(dataAdd));
     hideModal();
   };
+  console.log(storeReducer)
+  if (!auth.loginStatus) return <Redirect to={"/login"} />;
+
+  if (storeReducer.loadingStore) return <div>Loading...</div>;
   return (
     <div>
       <Modal show={isOpen} onHide={hideModal}>
@@ -62,7 +79,7 @@ function AddStock(props) {
                 name="image_url"
                 onChange={(e) => onChangeHandler(e)}
               />
-              <Form.Text className="text-muted">Input store id.</Form.Text>
+              <Form.Text className="text-muted">Input Image Url.</Form.Text>
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
@@ -78,17 +95,14 @@ function AddStock(props) {
               </Form.Text>
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>StoreId</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Insert Product Stock"
-                name="StoreId"
-                onChange={(e) => onChangeHandler(e)}
-              />
-              <Form.Text className="text-muted">
-                Recalculate the initial stock.
-              </Form.Text>
+            <Form.Group as={Col} controlId="formGridStore">
+              <Form.Label>Store</Form.Label>
+              <Form.Control as="select" name="StoreId" onChange={(e) => onChangeHandler(e)}>
+                  <option selected>Select Store</option>
+                  {storeReducer.dataStore.map((store, i) => {
+                      return <Option store={store} key={i} value={store.id}/>
+                  })}
+              </Form.Control>
             </Form.Group>
 
             <Button variant="primary" type="submit">
