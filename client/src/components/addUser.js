@@ -26,11 +26,8 @@ function AddUser({ isOpen, hideModal }) {
         e.preventDefault()
         const { value, name } = e.target
         console.log(value);
-
-
         setDataAdd({ ...dataAdd, [name]: value })
     }
-    console.log(dataStore, 'dataStore');
     const onSubmitHandler = (e) => {
         e.preventDefault()
         dispatch(addUser(dataAdd))
@@ -62,9 +59,10 @@ function AddUser({ isOpen, hideModal }) {
 
                         <Form.Group as={Col} controlId="formGridStore">
                             <Form.Label>Store</Form.Label>
-                            <Form.Control as="select" defaultValue="Choose..." name="store">
+                            <Form.Control as="select" name="StoreId" onChange={(e) => onChangeHandler(e)}>
+                                <option selected>Select Store</option>
                                 {storeReducer.dataStore.map((store, i) => {
-                                    return <Option store={store} key={i} />
+                                    return <Option store={store} key={i} value={store.id}/>
                                 })}
                             </Form.Control>
                         </Form.Group>

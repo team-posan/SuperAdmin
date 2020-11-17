@@ -1,9 +1,9 @@
 import React from 'react'
 
 const option = (props) => {
-    const{store_name} = props.store
+    const{store_name ,id} = props.store
     return (
-    <option>{store_name}</option>
+    <option value={id}>{store_name}</option>
     )
 }
 

@@ -1,11 +1,15 @@
 import axios from "axios";
 
-const baseUrlStore = "http://localhost:5000/";
+const baseUrlUser = "http://localhost:5000/";
 
 export const fetchUser = () => {
   return (dispatch) => {
     axios
-      .get(baseUrlStore + "store")
+      .get(baseUrlUser + "user/getkasir",{
+        headers:{
+          access_token:localStorage.getItem('access_token')
+        }
+      })
       .then(({ data }) => {
         dispatch({ type: "FETCH_USER", payload: data });
       })
@@ -21,7 +25,7 @@ export const addUser = (dataAdd) => {
     const { username,password,role,StoreId } = dataAdd;
     axios
       .post(
-        baseUrlStore + "user/addkasir",
+        baseUrlUser + "user/addkasir",
         { username,password,role,StoreId },
         {
           headers: {
@@ -44,9 +48,10 @@ export const addUser = (dataAdd) => {
 export const editUser = (dataEdit) => {
   return (dispatch) => {
     const { username,password,role,StoreId, id } = dataEdit;
+    console.log(dataEdit)
     axios
       .patch(
-        baseUrlStore + "/editkasir" + id,
+        baseUrlUser + "user/editkasir/" + id,
         { username,password,role,StoreId },
         {
           headers: {
@@ -55,7 +60,6 @@ export const editUser = (dataEdit) => {
         }
       )
       .then((result) => {
-        // console.log(result);
         dispatch({
           type: "EDIT_USER",
           payload: { username,password,role,StoreId, id },
@@ -70,7 +74,7 @@ export const editUser = (dataEdit) => {
 export const deleteUser = (dataDelete) => {
   return (dispatch) => {
     axios
-      .delete(baseUrlStore + "/deletekasir" + dataDelete.id, {
+      .delete(baseUrlUser + "user/deletekasir/" + dataDelete.id, {
         headers: {
           access_token: localStorage.getItem("access_token"),
         },
