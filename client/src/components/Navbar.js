@@ -33,9 +33,14 @@ function Navbar() {
           </div>
         </Link>
         <Link to='/user'>
-        <div className="link">
-          <img src={List} className="icon" />
-        </div>
+          <div className="link">
+            <img src={List} className="icon" />
+          </div>
+        </Link>
+        <Link to='/log'>
+          <div className="link">
+            <img src={List} className="icon" />
+          </div>
         </Link>
       </div>
     </div>

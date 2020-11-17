@@ -1,6 +1,6 @@
 const initialState = {
   dataProduct: [],
-  lodongProduct: true,
+  loadingProduct: true,
 };
 
 function Reducer(state = initialState, { type, payload }) {
