@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table, Modal, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { Button, Table, Modal, Form, Col } from "react-bootstrap";
+import { useDispatch,useSelector } from "react-redux";
 import { editProduct } from "../store/action/Product-action";
+import  { Redirect } from 'react-router-dom'
+import Option from "../components/option"
+import { fetchStore } from '../store/action/Store-action'
+
 
 function EditStock(props) {
   const { isOpen, hideModal, data } = props;
 
   const [editData, setEditData] = useState(data);
-  console.log(editData.id, "ini edit di addProduct modal");
+
+  const storeReducer = useSelector((state) => state.storeReducer);
+  const auth = useSelector((state) => state.loginReducer);
 
   const dispatch = useDispatch();
+
+
+  useEffect(()=>{
+    dispatch(fetchStore())
+  },[])
+
+
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
@@ -22,6 +35,14 @@ function EditStock(props) {
     dispatch(editProduct(editData));
     hideModal();
   };
+
+  console.log(editData);
+
+
+  if (!auth.loginStatus) return <Redirect to={"/login"} />;
+
+  if (storeReducer.loadingStore) return <div>Loading...</div>;
+
   return (
     <div>
       <Modal show={isOpen} onHide={hideModal}>
@@ -84,18 +105,15 @@ function EditStock(props) {
               </Form.Text>
             </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>StoreId</Form.Label>
-              <Form.Control
-                defaultValue={editData.StoreId}
-                type="number"
-                placeholder="Insert Product Stock"
-                name="StoreId"
-                onChange={(e) => onChangeHandler(e)}
-              />
-              <Form.Text className="text-muted">
-                Recalculate the initial stock.
-              </Form.Text>
+         
+            <Form.Group as={Col} controlId="formGridStore">
+              <Form.Label>Store</Form.Label>
+              <Form.Control as="select" name="StoreId" onChange={(e) => onChangeHandler(e)}>
+                  <option selected>Select Store</option>
+                  {storeReducer.dataStore.map((store, i) => {
+                      return <Option store={store} key={i} value={store.id}/>
+                  })}
+              </Form.Control>
             </Form.Group>
 
             <Button variant="primary" type="submit">
