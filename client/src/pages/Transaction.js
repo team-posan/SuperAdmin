@@ -28,7 +28,7 @@ const Log = () => {
     return (
         <div>
             <Table striped bordered  variant="light">
-                <thead className="color">
+                <thead style={{backgroundColor:'#1E2749', color:'white'}}>
                     <tr>
                         <th scope="col">No.</th>
                         <th scope="col">Product Name</th>

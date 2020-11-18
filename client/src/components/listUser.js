@@ -17,7 +17,8 @@ function ListUser(props) {
         phone_number
     } = props.user;
 
-    console.log(props.user)
+
+    console.log(props)
 
     const showModal = () => {
         setIsOpen(true);
@@ -53,23 +54,21 @@ function ListUser(props) {
 
     return (
         <tr>
-            <th scope="row">{id}</th>
+            <td>{username}</td>
             <td>{role}</td>
             <td>{StoreId}</td>
-            <td>{username}</td>
-            <td>{phone_number}</td>
             <td>
                 {
                     role === 'customer' ?
                         null
                         :
-                        <button className="add-btn" onClick={showModal} className="btn btn-success">
+                        <button  onClick={showModal} className="btn btn-success add-btn" style={{borderRadius:'3px'}}>
                             Edit
                     </button>
                 }
                 {
                     role !== 'admin' ?
-                        <button className="delete-btn" onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
+                        <button onClick={(e) => onDeleteClick(e)} className="btn btn-danger delete-btn" style={{borderRadius:'3px'}}>
                             Delete
                     </button>
                         :

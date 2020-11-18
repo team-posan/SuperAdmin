@@ -38,22 +38,22 @@ function User() {
     return (
         <div className="wraper">
             <h1>List User</h1>
-            <Button className="add-btn" onClick={showModal}>Add User</Button>
+            <Button className="add-btn" onClick={showModal} style={{borderRadius:'3px'}}>Add User</Button>
             <Table striped bordered  variant="light">
-                <thead className="thead-dark">
+                <thead style={{backgroundColor:'#1E2749', color:'white'}}>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">Username</th>
                         <th scope="col">Role</th>
                         <th scope="col">Store</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Phone Number</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {userReducer.dataUser.length > 0 ?
                     userReducer.dataUser.map((val, index) => {
-                        return <ListUser key={index} user={val} />;
+                        if(val.role !== 'customer'){
+                            return <ListUser key={index} user={val} />;
+                        }
                     })
                     :
                     null

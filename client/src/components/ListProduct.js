@@ -80,10 +80,10 @@ function ListProduct(props) {
       <td>{stock}</td>
       <td>{filterStore()}</td>
       <td>
-        <Button onClick={showModal} className="add-btn">
+        <Button onClick={showModal} className="add-btn" style={{borderRadius:'3px'}}>
           Edit
         </Button>
-        <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} >
+        <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} style={{borderRadius:'3px'}}>
           Delete
         </Button>
       </td>

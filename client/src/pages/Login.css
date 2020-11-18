@@ -3,3 +3,9 @@
     margin-right: 30Vw;
 
 }
+
+.box-login{
+    -webkit-box-shadow: 4px 6px 10px 0px rgba(9,15,128,0.07);
+    -moz-box-shadow: 4px 6px 10px 0px rgba(9,15,128,0.07);
+    box-shadow: 4px 6px 10px 0px rgba(9,15,128,0.07);
+}

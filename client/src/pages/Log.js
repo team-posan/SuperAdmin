@@ -100,7 +100,7 @@ const Log = () => {
     return (
         <div className="wraper">
             <h1>List Transaction</h1>
-            <Table columns={colums} dataSource={dataTable()} pagination={{ position: [pagination.top], pageSize: 10 }} className={tableCSS} />
+            <Table columns={colums} dataSource={dataTable()} pagination={{ position: [pagination.top] }} className={tableCSS} />
             {/* <div>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>

@@ -40,14 +40,14 @@ function App() {
               {
                 auth.loginStatus ?
                   <Link to="/login">
-                    <div className="logout-btn">
-                      <button className='delete-btn' onClick={onLogoutClick}>Logout</button>
+                    <div className="logout-btn" >
+                      <button className='delete-btn' style={{borderRadius:'3px'}} onClick={onLogoutClick}>Logout</button>
                     </div>
                   </Link>
                   :
                   <Link to="/login">
                     <div className="logout-btn">
-                      <button className='add-btn'>Login</button>
+                      <button className='add-btn' style={{borderRadius:'3px'}}>Login</button>
                     </div>
                   </Link>
               }

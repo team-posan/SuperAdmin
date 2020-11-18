@@ -59,14 +59,14 @@ function ListStore(props) {
       <td>{store_name}</td>
       <td>{store_address}</td>
       <td>
-        <Button className="add-btn" onClick={showtransaction} >
+        <Button className="add-btn" onClick={showtransaction} style={{borderRadius:'3px'}}>
           See All transaction
       </Button >
 
-        <Button className="add-btn" onClick={showModal} >
+        <Button className="add-btn" onClick={showModal} style={{borderRadius:'3px'}}>
           Edit
         </Button >
-        <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} >
+        <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} style={{borderRadius:'3px'}}>
           Delete
         </Button >
       </td>

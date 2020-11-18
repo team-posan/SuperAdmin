@@ -34,9 +34,9 @@ function Store() {
   return (
     <div className="wraper">
       <h1>List Store</h1>
-      <Button className="add-btn" onClick={showModal}>Add Store</Button>
+      <Button className="add-btn" onClick={showModal} style={{borderRadius:'3px'}}>Add Store</Button>
       <Table striped bordered variant="light" responsive="md" size="md">
-        <thead className="color" center>
+        <thead style={{backgroundColor:'#1E2749', color:'white'}} center>
           <tr>
             <th scope="col">No</th>
             <th scope="col">Store Name</th>
