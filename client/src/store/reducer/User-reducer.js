@@ -6,6 +6,7 @@ const initialState = {
   function Reducer(state = initialState, { type, payload }) {
     switch (type) {
       case "FETCH_USER":
+        console.log('masuk action reducer');
         return { ...state, dataUser: payload, loadingUser: false };
       case "ADD_USER":
         // console.log('masuk add store reducers')

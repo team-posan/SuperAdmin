@@ -19,16 +19,16 @@ const Log = () => {
         margin: '20px 60px',
         backgroundColor: 'white',
         '& table': {
-          borderCollapse: 'collapse'
+            borderCollapse: 'collapse'
         },
         '& thead > tr > th': {
-          backgroundColor: '#1E2749',
-          color: 'white',
-          fontWeight:'bolder'
+            backgroundColor: '#1E2749',
+            color: 'white',
+            fontWeight: 'bolder'
         }
-      });
+    });
 
-    const colums =[
+    const colums = [
         {
             title: 'No',
             dataIndex: 'index',
@@ -56,11 +56,11 @@ const Log = () => {
         { label: 'topCenter', value: 'topCenter' },
         { label: 'topRight', value: 'topRight' },
         { label: 'none', value: 'none' },
-      ];
+    ];
 
-    const dataTable =()=>{
-       const newDataTable = logReducer.dataLog.carts.map((val,i)=>{
-            return {index:i+1, product_name:val.Product.product_name, StoreId:val.Product.StoreId, payment_status:val.payment_status }
+    const dataTable = () => {
+        const newDataTable = logReducer.dataLog.carts.map((val, i) => {
+            return { index: i + 1, product_name: val.Product.product_name, StoreId: val.Product.StoreId, payment_status: val.payment_status }
         })
 
         return newDataTable
@@ -72,7 +72,7 @@ const Log = () => {
     const [dataLog, setDataLog] = useState([]);
     const [dataStore, setDataStore] = useState([]);
     const [pagination, setPagination] = useState({
-        top:'topLeft'
+        top: 'topLeft'
     })
 
     const [filtered, setFiltered] = useState('')
@@ -99,7 +99,8 @@ const Log = () => {
 
     return (
         <div className="wraper">
-            <Table columns={colums} dataSource={dataTable()} pagination={{ position: [pagination.top] }}   className={tableCSS}/>
+            <h1>List Transaction</h1>
+            <Table columns={colums} dataSource={dataTable()} pagination={{ position: [pagination.top] }} className={tableCSS} />
             {/* <div>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>

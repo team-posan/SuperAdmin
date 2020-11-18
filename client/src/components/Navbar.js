@@ -5,14 +5,14 @@ import Store from "../assets/Group 9.svg";
 import Stock from "../assets/Group 10.svg";
 import List from "../assets/Group 11.svg";
 import { Link } from "react-router-dom";
-import Cashier from "../assets/cashier.svg"
+import User from "../assets/user.svg"
 import Logo from "../assets/logo.svg"
 
 function Navbar() {
   return (
     <div className="nav-wrap">
       <div className="nav-logo">
-        <img src={Logo} width="70%"/>
+        {/* <img src={Logo} width="70%"/> */}
       </div>
       <div className="nav-link">
         <Link to="/dashboard">
@@ -32,7 +32,7 @@ function Navbar() {
         </Link>
         <Link to="/user">
           <div className="link">
-            <img src={Cashier} className="icon" />
+            <img src={User} className="icon" />
           </div>
         </Link>
         <Link to='/log'>

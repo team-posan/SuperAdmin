@@ -50,7 +50,7 @@ function Dashboard() {
 
 
   useEffect(() => {
-    const filteredProduct = productReducer.dataProduct.filter(product => product.stock < 150)
+    const filteredProduct = productReducer.dataProduct.filter(product => product.stock < 10)
     setDataProduct(filteredProduct)
 
   }, [productReducer]);
@@ -96,6 +96,7 @@ function Dashboard() {
             </div>
           </Col>
           <Col>
+         
             <div className="card">
               <Row>
                 <Col className="icon-card">
@@ -120,7 +121,7 @@ function Dashboard() {
         <div className="dsb-top">
           <h1>STOCK</h1>
           <Table striped bordered responsive>
-            <thead className="color">
+            <thead style={{backgroundColor:'#1E2749', color:'white'}}>
               <tr>
                 <th scope="col">Product Name</th>
                 <th scope="col">Stock</th>

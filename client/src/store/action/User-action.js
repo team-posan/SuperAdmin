@@ -4,29 +4,34 @@ const baseUrlUser = "http://localhost:5000/";
 
 export const fetchUser = () => {
   return (dispatch) => {
+    console.log('masuk action');
     axios
-      .get(baseUrlUser + "user/getkasir",{
-        headers:{
-          access_token:localStorage.getItem('access_token')
+      .get(baseUrlUser + "user/getkasir", {
+        headers: {
+          access_token: localStorage.getItem('access_token')
         }
       })
       .then(({ data }) => {
+        console.log('action', data);
         dispatch({ type: "FETCH_USER", payload: data });
       })
       .catch((err) => {
-        console.log(err);
-      });
+        console.log(err, 'err');
+      })
+      .finally(res => {
+        console.log(res);
+      })
   };
 };
 
 export const addUser = (dataAdd) => {
   return (dispatch) => {
-    console.log(dataAdd,'ini action');
-    const { username,password,role,StoreId } = dataAdd;
+    console.log(dataAdd, 'ini action');
+    const { username, password, role, StoreId } = dataAdd;
     axios
       .post(
         baseUrlUser + "user/addkasir",
-        { username,password,role,StoreId },
+        { username, password, role, StoreId },
         {
           headers: {
             access_token: localStorage.getItem("access_token"),
@@ -36,7 +41,7 @@ export const addUser = (dataAdd) => {
       .then(({ data }) => {
         dispatch({
           type: "ADD_USER",
-          payload: { username,password,role,StoreId, id: data.id },
+          payload: { username, password, role, StoreId, id: data.id },
         });
       })
       .catch((err) => {
@@ -47,12 +52,12 @@ export const addUser = (dataAdd) => {
 
 export const editUser = (dataEdit) => {
   return (dispatch) => {
-    const { username,password,role,StoreId, id } = dataEdit;
+    const { username, password, role, StoreId, id } = dataEdit;
     console.log(dataEdit)
     axios
       .patch(
         baseUrlUser + "user/editkasir/" + id,
-        { username,password,role,StoreId },
+        { username, password, role, StoreId },
         {
           headers: {
             access_token: localStorage.getItem("access_token"),
@@ -62,7 +67,7 @@ export const editUser = (dataEdit) => {
       .then((result) => {
         dispatch({
           type: "EDIT_USER",
-          payload: { username,password,role,StoreId, id },
+          payload: { username, password, role, StoreId, id },
         });
       })
       .catch((err) => {
