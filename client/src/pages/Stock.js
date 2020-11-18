@@ -34,11 +34,11 @@ function Stock() {
   if (productReducer.loadingStore) return <div>Loading...</div>;
   return (
     <div className="wraper">
-      <Button onClick={showModal}>Add Product</Button>
-      <Table striped bordered hover variant="light">
-        <thead className="thead-dark">
+      <Button className="add-btn" onClick={showModal}>Add Product</Button>
+      <Table striped bordered  variant="light">
+        <thead className="color">
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">Bo</th>
             <th scope="col">Product Name</th>
             <th scope="col">Price</th>
             <th scope="col">Img-url</th>
@@ -49,7 +49,7 @@ function Stock() {
         </thead>
         <tbody>
           {productReducer.dataProduct.map((product, i) => {
-            return <ListProduct product={product} key={i} />;
+            return <ListProduct product={product} key={i} index={i} />;
           })}
         </tbody>
       </Table>

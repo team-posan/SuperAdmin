@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table, Spin } from "react-bootstrap";
+import { Button, Table, Spinner } from "react-bootstrap";
 import ListStore from "../components/ListStore";
 import AddStore from "../components/addStore";
 import { useSelector, useDispatch } from "react-redux";
@@ -33,9 +33,9 @@ function Store() {
   if (storeReducer.loadingStore) return <Spinner animation="border" />;
   return (
     <div className="wraper">
-      <Button onClick={showModal}>Add Store</Button>
-      <Table striped bordered hover variant="light">
-        <thead className="thead-dark">
+      <Button className="add-btn" onClick={showModal}>Add Store</Button>
+      <Table striped bordered variant="light">
+        <thead className="color">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Store Name</th>
@@ -46,7 +46,7 @@ function Store() {
         </thead>
         <tbody>
           {storeReducer.dataStore.map((val, index) => {
-            return <ListStore key={index} store={val} />;
+            return <ListStore key={index} store={val} index={index} />;
           })}
         </tbody>
       </Table>

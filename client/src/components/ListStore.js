@@ -4,10 +4,12 @@ import EditModal from "../components/editStoreModal";
 import { useDispatch } from "react-redux";
 import { deleteStore } from "../store/action/Store-action";
 import { useHistory } from "react-router";
+import { Button } from "react-bootstrap"
+import './ListStore.css'
 
 function ListStore(props) {
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(props.store, props.index, '<----ini props');
   const history = useHistory()
   const dispatch = useDispatch();
   const { store_name, store_address, id } = props.store;
@@ -53,21 +55,21 @@ function ListStore(props) {
 
   return (
     <tr>
-      <th scope="row">{id}</th>
+      <th scope="row">{props.index + 1}</th>
       <td>{store_name}</td>
       <td>{store_address}</td>
       <td>
-      <button onClick={showtransaction} className="btn btn-success">
-          See All transaction
-      </button>
+          <Button className="add-btn" onClick={showtransaction} >
+            See All transaction
+      </Button >
       </td>
       <td>
-        <button onClick={showModal} className="btn btn-success">
-          Edit
-        </button>
-        <button onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
-          Delete
-        </button>
+          <Button className="add-btn" onClick={showModal} >
+            Edit
+        </Button >
+          <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} >
+            Delete
+        </Button >
       </td>
       <EditModal isOpen={isOpen} hideModal={hideModal} dataEdit={props.store} />
     </tr>
