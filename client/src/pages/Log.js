@@ -1,22 +1,79 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
+// import { Table, Container, Row, Col, InputGroup, FormControl } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchLog } from "../store/action/Log-action";
 import { fetchStore } from "../store/action/Store-action";
 import ListLog from "../components/listLog"
 import "./Log.css"
+import { Table, Tag, Space } from 'antd';
+import { css } from '@emotion/css'
 
 const Log = () => {
     const auth = useSelector((state) => state.loginReducer);
     const logReducer = useSelector((state) => state.logReducer)
     const storeReducer = useSelector((state) => state.storeReducer)
 
+    // antd
+    const tableCSS = css({
+        margin: '20px 60px',
+        backgroundColor: 'white',
+        '& table': {
+          borderCollapse: 'collapse'
+        },
+        '& thead > tr > th': {
+          backgroundColor: '#1E2749',
+          color: 'white',
+          fontWeight:'bolder'
+        }
+      });
+
+    const colums =[
+        {
+            title: 'No',
+            dataIndex: 'index',
+            key: 'index',
+        },
+        {
+            title: 'Product Name',
+            dataIndex: 'product_name',
+            key: 'product_name',
+        },
+        {
+            title: 'Store ID',
+            dataIndex: 'StoreId',
+            key: 'StoreId',
+        },
+        {
+            title: 'Status',
+            dataIndex: 'payment_status',
+            key: 'payment_status',
+        }
+    ]
+
+    const topOptions = [
+        { label: 'topLeft', value: 'topLeft' },
+        { label: 'topCenter', value: 'topCenter' },
+        { label: 'topRight', value: 'topRight' },
+        { label: 'none', value: 'none' },
+      ];
+
+    const dataTable =()=>{
+       const newDataTable = logReducer.dataLog.carts.map((val,i)=>{
+            return {index:i+1, product_name:val.Product.product_name, StoreId:val.Product.StoreId, payment_status:val.payment_status }
+        })
+
+        return newDataTable
+    }
+
 
     const dispatch = useDispatch();
 
     const [dataLog, setDataLog] = useState([]);
     const [dataStore, setDataStore] = useState([]);
+    const [pagination, setPagination] = useState({
+        top:'topLeft'
+    })
 
     const [filtered, setFiltered] = useState('')
     // console.log(dataLog);
@@ -39,9 +96,11 @@ const Log = () => {
 
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
     if (logReducer.loadingLog) return <div>Loading...</div>;
+
     return (
         <div className="wraper">
-            <div>
+            <Table columns={colums} dataSource={dataTable()} pagination={{ position: [pagination.top] }}   className={tableCSS}/>
+            {/* <div>
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
                         <InputGroup.Text id="basic-addon1">Search</InputGroup.Text>
@@ -69,7 +128,7 @@ const Log = () => {
                         return <ListLog log={log} key={i} index={i} />;
                     })}
                 </tbody>
-            </Table>
+            </Table> */}
 
         </div>
     )
