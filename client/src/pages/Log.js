@@ -40,8 +40,8 @@ const Log = () => {
             key: 'product_name',
         },
         {
-            title: 'Store ID',
-            dataIndex: 'StoreId',
+            title: 'Store',
+            dataIndex: 'Store',
             key: 'StoreId',
         },
         {
@@ -58,10 +58,18 @@ const Log = () => {
         { label: 'none', value: 'none' },
     ];
 
-    const dataTable = () => {
-        const newDataTable = logReducer.dataLog.carts.map((val, i) => {
-            return { index: i + 1, product_name: val.Product.product_name, StoreId: val.Product.StoreId, payment_status: val.payment_status }
-        })
+    const getStore=(id)=>{
+        let filterd = storeReducer.dataStore.filter(val=>val.id == id)
+        return filterd[0].store_name
+    }
+
+    const dataTable =()=>{
+       const newDataTable = logReducer.dataLog.carts.map((val,i)=>{
+            return {index:i+1, product_name:val.Product.product_name, Store:getStore(val.Product.StoreId), payment_status:val.payment_status }
+//     const dataTable = () => {
+//         const newDataTable = logReducer.dataLog.carts.map((val, i) => {
+//             return { index: i + 1, product_name: val.Product.product_name, StoreId: val.Product.StoreId, payment_status: val.payment_status }
+//         })
 
         return newDataTable
     }
