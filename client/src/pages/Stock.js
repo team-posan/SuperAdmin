@@ -34,9 +34,10 @@ function Stock() {
   if (productReducer.loadingStore) return <div>Loading...</div>;
   return (
     <div className="wraper">
-      <Button className="add-btn" onClick={showModal}>Add Product</Button>
+      <h1>List Stock</h1>
+      <Button className="add-btn"style={{borderRadius:'3px'}}  onClick={showModal}>Add Stock</Button>
       <Table striped bordered  variant="light">
-        <thead className="color">
+        <thead style={{backgroundColor:'#1E2749', color:'white'}}>
           <tr>
             <th scope="col">No</th>
             <th scope="col">Product Name</th>

@@ -1,12 +1,20 @@
 .Wraper {
     min-width: 100vw;
-    min-height: 100vh;
+    max-height: 20vh;
+    
+
     /* background-color: black; */
 }
 .color{
     background-color:#3E5095;
     color: white;
 }
-.mb-3{
+/* .mb-3{
     z-index: -1;
+} */
+.table{
+max-height: 50vh;
+position: sticky;
+/* z-index: -1; */
+
 }
