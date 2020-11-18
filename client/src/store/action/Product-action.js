@@ -74,7 +74,7 @@ export const editProduct = (dataEdit) => {
       .then((result) => {
         // console.log(result);
         dispatch({
-          type: "EDIT_STORE",
+          type: "EDIT_PRODUCT",
           payload: {
             product_name,
             price,

@@ -41,7 +41,7 @@ export const addUser = (dataAdd) => {
       .then(({ data }) => {
         dispatch({
           type: "ADD_USER",
-          payload: { username, password, role, StoreId, id: data.id },
+          payload: { username, password, role:'kasir', StoreId, id: data.id },
         });
       })
       .catch((err) => {

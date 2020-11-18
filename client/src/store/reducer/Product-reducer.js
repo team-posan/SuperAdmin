@@ -10,7 +10,8 @@ function Reducer(state = initialState, { type, payload }) {
     case "ADD_PRODUCT":
       // console.log("massuk add reducer product");
       return { ...state, dataProduct: state.dataProduct.concat(payload) };
-    case "EDIT_STORE":
+    case "EDIT_PRODUCT":
+      console.log('payloadddd<<<<')
       const editedData = state.dataProduct.map((val, index) => {
         if (val.id === payload.id) {
           return (state.dataProduct[index] = payload);
@@ -19,13 +20,14 @@ function Reducer(state = initialState, { type, payload }) {
         }
       });
       return { ...state, dataProduct: editedData };
-    case "DELETE_STORE":
+    case "DELETE_PRODUCT":
+      console.log(payload)
       const filteredData = state.dataProduct.filter((val) => {
         return val.id !== payload.id;
       });
+      return { ...state, dataProduct: filteredData };
     default:
       return state;
-      return { ...state, dataProduct: filteredData };
   }
 }
 

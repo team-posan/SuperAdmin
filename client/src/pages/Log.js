@@ -69,8 +69,7 @@ const Log = () => {
 //     const dataTable = () => {
 //         const newDataTable = logReducer.dataLog.carts.map((val, i) => {
 //             return { index: i + 1, product_name: val.Product.product_name, StoreId: val.Product.StoreId, payment_status: val.payment_status }
-//         })
-
+        })
         return newDataTable
     }
 
