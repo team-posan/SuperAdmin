@@ -33,7 +33,6 @@ function App() {
         </div>
         <div className="r-side">
           <div className="r-side-header">
-            Header
             {
               auth.loginStatus ?
                 <Link to="/login">

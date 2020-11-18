@@ -67,20 +67,6 @@ const Log = () => {
                     })}
                 </tbody>
             </Table>
-            <Container>
-                <Row>
-                    <Col>
-                        <h1>Data Chart</h1>
-                        <pre>{JSON.stringify(dataLog, null, 2)}</pre>
-                    </Col>
-                    <Col>
-                        <h1>Data Store</h1>
-                        <pre>{JSON.stringify(dataStore, null, 2)}</pre>
-                    </Col>
-                </Row>
-                <Row>
-                </Row>
-            </Container>
         </div>
     )
 }
