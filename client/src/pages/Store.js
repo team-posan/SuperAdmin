@@ -33,14 +33,14 @@ function Store() {
   if (storeReducer.loadingStore) return <Spinner animation="border" />;
   return (
     <div className="wraper">
+      <h1>List Store</h1>
       <Button className="add-btn" onClick={showModal}>Add Store</Button>
-      <Table striped bordered variant="light">
-        <thead className="color">
+      <Table striped bordered variant="light" responsive="md" size="md">
+        <thead className="color" center>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">No</th>
             <th scope="col">Store Name</th>
             <th scope="col">Address</th>
-            <th scope="col">Transaction</th>
             <th scope="col">Action</th>
           </tr>
         </thead>

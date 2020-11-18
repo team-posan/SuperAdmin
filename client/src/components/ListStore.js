@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteStore } from "../store/action/Store-action";
 import { useHistory } from "react-router";
 import { Button } from "react-bootstrap"
-import './ListStore.css'
+// import './ListStore.css'
 
 function ListStore(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,16 +59,15 @@ function ListStore(props) {
       <td>{store_name}</td>
       <td>{store_address}</td>
       <td>
-          <Button className="add-btn" onClick={showtransaction} >
-            See All transaction
+        <Button className="add-btn" onClick={showtransaction} >
+          See All transaction
       </Button >
-      </td>
-      <td>
-          <Button className="add-btn" onClick={showModal} >
-            Edit
+
+        <Button className="add-btn" onClick={showModal} >
+          Edit
         </Button >
-          <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} >
-            Delete
+        <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} >
+          Delete
         </Button >
       </td>
       <EditModal isOpen={isOpen} hideModal={hideModal} dataEdit={props.store} />

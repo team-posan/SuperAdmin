@@ -35,7 +35,7 @@ function App() {
         {/* <Container> */}
         <div className="r-side">
           <div className="r-side-header">
-            <div className='info-header'>Admin Dashboard</div>
+            <div className='info-header'></div>
             <div className='login-btn-wrp'>
               {
                 auth.loginStatus ?

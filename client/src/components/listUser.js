@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import EditModal from "../components/editUserModal";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../store/action/User-action";
-
+import "./ListStore.css"
 function ListUser(props) {
     const [isOpen, setIsOpen] = useState(false);
 

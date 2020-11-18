@@ -34,7 +34,8 @@ function Stock() {
   if (productReducer.loadingStore) return <div>Loading...</div>;
   return (
     <div className="wraper">
-      <Button className="add-btn" onClick={showModal}>Add Product</Button>
+      <h1>List Stock</h1>
+      <Button className="add-btn" onClick={showModal}>Add Stock</Button>
       <Table striped bordered  variant="light">
         <thead className="color">
           <tr>

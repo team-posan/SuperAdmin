@@ -16,6 +16,7 @@ function User() {
     const [datauser, setDatauser] = useState([]);
 
     useEffect(() => {
+        console.log('<-----');
         dispatch(fetchUser());
         setDatauser(userReducer);
     }, []);
@@ -32,10 +33,11 @@ function User() {
     
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
     
-    if (userReducer.loadingUser) return <Spinner animation="border" role="status">
-  </Spinner>
+//     if (userReducer.loadingUser) return <Spinner animation="border" role="status">
+//   </Spinner>
     return (
         <div className="wraper">
+            <h1>List User</h1>
             <Button className="add-btn" onClick={showModal}>Add User</Button>
             <Table striped bordered  variant="light">
                 <thead className="thead-dark">

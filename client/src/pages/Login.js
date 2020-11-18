@@ -3,16 +3,17 @@ import { Button, Table, Form } from "react-bootstrap";
 import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../store/action/Login-action";
+import "./Login.css"
 
 export default function () {
   const [data, setData] = useState();
-    const dispatch = useDispatch();
-  const auth = useSelector(state=>state.loginReducer)
+  const dispatch = useDispatch();
+  const auth = useSelector(state => state.loginReducer)
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(loginAction(data.username,data.password));
+    dispatch(loginAction(data.username, data.password));
   };
 
 
@@ -24,38 +25,41 @@ export default function () {
     });
   };
 
-  if(auth.loginStatus) return <Redirect to={'/dashboard'}/>
+  if (auth.loginStatus) return <Redirect to={'/dashboard'} />
 
   return (
     <div>
-      <div>LoginPage</div>
-      <div>
-        <Form onSubmit={(e)=>handleSubmit(e)}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Insert Product Email"
-              onChange={handleInput}
-              name="username"
-            />
-            <Form.Text className="text-muted"></Form.Text>
-          </Form.Group>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="******"
-              onChange={handleInput}
-              name="password"
-            />
-            <Form.Text className="text-muted"></Form.Text>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
+    
+        
+        <div className="login">
+          <h1>Login Page</h1>
+          <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Insert Product Email"
+                onChange={handleInput}
+                name="username"
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="******"
+                onChange={handleInput}
+                name="password"
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
           </Button>
-        </Form>
-      </div>
+          </Form>
+        </div>
+    
     </div>
   );
 }

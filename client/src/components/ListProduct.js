@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Modal from "./addProduct";
 import Swal from "sweetalert2";
 import EditProduct from "./editProductModal";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../store/action/Product-action";
-import { fetchProduct } from "../store/action/Product-action";
 import { Button } from 'react-bootstrap'
 import "./ListProduct.css"
 import { fetchStore } from '../store/action/Store-action'
-import { useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 
@@ -26,10 +24,10 @@ function ListProduct(props) {
   const auth = useSelector((state) => state.loginReducer);
   //modal
   const [isOpen, setIsOpen] = useState(false);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     dispatch(fetchStore())
-  },[])
+  }, [])
 
   const showModal = () => {
     setIsOpen(true);
@@ -63,9 +61,9 @@ function ListProduct(props) {
       });
   };
 
-  const filterStore=()=>{
-      let filterd = storeReducer.dataStore.filter(val=>val.id == StoreId)
-      return filterd[0].store_name
+  const filterStore = () => {
+    let filterd = storeReducer.dataStore.filter(val => val.id == StoreId)
+    return filterd[0].store_name
   }
 
   if (!auth.loginStatus) return <Redirect to={"/login"} />;
@@ -75,9 +73,10 @@ function ListProduct(props) {
   return (
     <tr>
       <th scope="row">{props.index + 1}</th>
-      <td>{product_name}</td>
+      <td>{product_name}
+      </td>
       <td>{price}</td>
-      <td style={{maxWidth:'600px', overflow:'hidden'}}><a style={{color:'black'}} href={`${image_url}`} target='_blank'>View Image Here</a></td>
+      <td style={{ maxWidth: '600px', overflow: 'hidden' }}><a style={{ color: 'black' }} href={`${image_url}`} target='_blank'>View Image Here</a></td>
       <td>{stock}</td>
       <td>{filterStore()}</td>
       <td>

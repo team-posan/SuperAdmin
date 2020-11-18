@@ -96,6 +96,7 @@ function Dashboard() {
             </div>
           </Col>
           <Col>
+         
             <div className="card">
               <Row>
                 <Col className="icon-card">
