@@ -1,11 +1,17 @@
 .Wraper {
-    margin-left: 12vw;
+    /* margin-left: 12vw; */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    z-index: -1;
+
     
     /* background-color: black; */
+}
+.color{
+    background-color:#3E5095;
+    color: white;
 }
 .card-txt{
     margin-left: 10px;
@@ -29,7 +35,10 @@
 .dsb-top{
  margin: 10px;
  height: 15vh;
- width: 80vw ;
+ width:50vw ;
+ padding-right: 100px;
+ margin-top: 30px;
+
 }
 
 .dsb-mdl {

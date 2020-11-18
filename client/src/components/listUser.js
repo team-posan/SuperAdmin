@@ -8,16 +8,16 @@ function ListUser(props) {
     const [isOpen, setIsOpen] = useState(false);
 
     const dispatch = useDispatch();
-    const { 
+    const {
         username,
         password,
         StoreId,
         role,
         id,
-        phone_number 
-        } = props.user;
+        phone_number
+    } = props.user;
 
-         console.log(props.user)
+    console.log(props.user)
 
     const showModal = () => {
         setIsOpen(true);
@@ -58,24 +58,24 @@ function ListUser(props) {
             <td>{StoreId}</td>
             <td>{username}</td>
             <td>{phone_number}</td>
-            <td><center>
+            <td>
                 {
                     role === 'customer' ?
-                   null
-                    :
-                    <button onClick={showModal} className="btn btn-success">
-                        Edit
+                        null
+                        :
+                        <button className="add-btn" onClick={showModal} className="btn btn-success">
+                            Edit
                     </button>
                 }
                 {
                     role !== 'admin' ?
-                    <button onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
-                        Delete
+                        <button className="delete-btn" onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
+                            Delete
                     </button>
-                    :
-                    null
+                        :
+                        null
                 }
-            </center></td>
+            </td>
             <EditModal isOpen={isOpen} hideModal={hideModal} dataEdit={props.user} />
         </tr>
     );

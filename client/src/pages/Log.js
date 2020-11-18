@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { fetchLog } from "../store/action/Log-action";
 import { fetchStore } from "../store/action/Store-action";
 import ListLog from "../components/listLog"
+import "./Log.css"
 
 const Log = () => {
     const auth = useSelector((state) => state.loginReducer);
@@ -39,34 +40,37 @@ const Log = () => {
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
     if (logReducer.loadingLog) return <div>Loading...</div>;
     return (
-        <div>
-            <InputGroup className="mb-3">
-                <InputGroup.Prepend>
-                    <InputGroup.Text id="basic-addon1">Search</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl
-                    placeholder="Store"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                />
-            </InputGroup>
-            <p>{filtered}</p>
-            <Table striped bordered hover responsive>
-                <thead className="thead-light">
+        <div className="wraper">
+            <div>
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="basic-addon1">Search</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                        placeholder="Store"
+                        aria-label="Username"
+                        aria-describedby="basic-addon1"
+                    />
+                </InputGroup>
+                <p>{filtered}</p>
+            </div>
+            <Table striped bordered variant="light">
+                <thead className="color">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Product Name</th>
-                        <th scope="col">Store Id</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Payment Status</th>
+                        <th scope="col">Product Id</th>
+                        <th scope="col">Store</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     {logReducer.dataLog.carts.map((log, i) => {
-                        return <ListLog log={log} key={i} />;
+                        return <ListLog log={log} key={i} index={i} />;
                     })}
                 </tbody>
             </Table>
+
         </div>
     )
 }

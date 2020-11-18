@@ -5,6 +5,8 @@ import EditProduct from "./editProductModal";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../store/action/Product-action";
 import { fetchProduct } from "../store/action/Product-action";
+import { Button } from 'react-bootstrap'
+import "./ListProduct.css"
 
 function ListProduct(props) {
   const dispatch = useDispatch();
@@ -43,19 +45,19 @@ function ListProduct(props) {
   };
   return (
     <tr>
-      <th scope="row">{id}</th>
+      <th scope="row">{props.index + 1}</th>
       <td>{product_name}</td>
       <td>{price}</td>
       <td>{image_url}</td>
       <td>{stock}</td>
       <td>{StoreId}</td>
       <td>
-        <button onClick={showModal} className="btn btn-success">
+        <Button onClick={showModal} className="add-btn">
           Edit
-        </button>
-        <button onClick={(e) => onDeleteClick(e)} className="btn btn-danger">
+        </Button>
+        <Button className="delete-btn" onClick={(e) => onDeleteClick(e)} >
           Delete
-        </button>
+        </Button>
       </td>
       {/* <Modal isOpen={isOpen} hideModal={hideModal} /> */}
       <EditProduct

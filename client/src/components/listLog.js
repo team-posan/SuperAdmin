@@ -8,7 +8,7 @@ function ListStore(props) {
 
     return (
         <tr>
-            <th scope="row">{id}</th>
+            <th scope="row">{props.index + 1}</th>
             <td>{Product.product_name}</td>
             <td>{UserId}</td>
             <td>{quantity}</td>

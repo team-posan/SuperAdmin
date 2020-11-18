@@ -27,10 +27,10 @@ const Log = () => {
     if (logReducer.loadingLog) return <Spinner animation="border" />;
     return (
         <div>
-            <Table striped bordered hover variant="light">
-                <thead className="thead-dark">
+            <Table striped bordered  variant="light">
+                <thead className="color">
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">No.</th>
                         <th scope="col">Product Name</th>
                         <th scope="col">User ID</th>
                         <th scope="col">Quantity</th>
@@ -41,7 +41,7 @@ const Log = () => {
                     {logReducer.dataLog.carts.map((log, i) => {
                         console.log('>>>', log.Product.StoreId, params.StoreId)
                         if (String(log.Product.StoreId) === params.StoreId) {
-                            return <ListLog log={log} key={i} />;
+                            return <ListLog log={log} key={i} index={i} />;
                         }
                     })}
                 </tbody>

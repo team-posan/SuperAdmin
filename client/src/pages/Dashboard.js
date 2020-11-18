@@ -72,8 +72,9 @@ function Dashboard() {
   // if (productReducer.loadingStore && storeReducer.loadingStore && logReducer.loadingLog) return <div>Loading...</div>;
 
   return (
-    <div className="wraper">
-      <Container>
+    // <Container>
+      <div className="wraper">
+        <h1>Dashboard</h1>
         <Row>
           <Col>
             <div className="card">
@@ -117,14 +118,12 @@ function Dashboard() {
 
 
         <div className="dsb-top">
-          Stock yang mau habis
-          <Table striped bordered hover responsive>
-            <thead className="thead-light">
+          <h1>STOCK</h1>
+          <Table striped bordered responsive>
+            <thead className="color">
               <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Product Name</th>
                 <th scope="col">Stock</th>
-                <th scope="col">Store</th>
               </tr>
             </thead>
             <tbody>
@@ -134,11 +133,11 @@ function Dashboard() {
             </tbody>
           </Table>
         </div>
-      </Container>
-      {/* <div className="dsb-mdl">{JSON.stringify(dataProduct, null, 2)}</div> */}
-      <div className="dsb-btm">
+        {/* <div className="dsb-mdl">{JSON.stringify(dataProduct, null, 2)}</div> */}
+        <div className="dsb-btm">
+        </div>
       </div>
-    </div>
+    // </Container> 
   );
 }
 

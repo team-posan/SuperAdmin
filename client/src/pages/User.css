@@ -1,0 +1,17 @@
+.color{
+    background-color:#3E5095;
+    color: white;
+}
+
+.container {
+
+    margin-left: 12vw;
+
+    /* min-width: 100vw;
+    min-height: 100vh; */
+    /* background-color: black; */
+}
+
+.btn {
+    margin: 5px
+}

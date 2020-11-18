@@ -5,6 +5,7 @@ import AddUser from "../components/addUser";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { fetchUser } from "../store/action/User-action";
+import "./User.css"
 
 function User() {
     const auth = useSelector((state) => state.loginReducer);
@@ -32,12 +33,11 @@ function User() {
     if (!auth.loginStatus) return <Redirect to={"/login"} />;
     
     if (userReducer.loadingUser) return <Spinner animation="border" role="status">
-    <span className="sr-only">Loading...</span>
   </Spinner>
     return (
         <div className="wraper">
-            <Button onClick={showModal}>Add User</Button>
-            <Table striped bordered hover variant="light">
+            <Button className="add-btn" onClick={showModal}>Add User</Button>
+            <Table striped bordered  variant="light">
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
