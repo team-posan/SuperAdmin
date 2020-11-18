@@ -35,7 +35,7 @@ function EditUser(props) {
                     <Form onSubmit={(e) => onSubmitHandler(e)}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>cashier Name</Form.Label>
-                            <Form.Control type="text" placeholder="Insert User Name" name="username" defaultValue={dataEdit.username} onChange={(e) => onChangeHandler(e)} />
+                            <Form.Control type="text" placeholder="Insert Username" name="username" defaultValue={dataEdit.username} onChange={(e) => onChangeHandler(e)} />
                             <Form.Text className="text-muted">
                                 Make sure the cashier name is correct.
                             </Form.Text>
@@ -43,7 +43,7 @@ function EditUser(props) {
 
                                         <Form.Group controlId="formBasicEmail">
                                             <Form.Label>Password</Form.Label>
-                                            <Form.Control type="password" placeholder="Insert Store Address" name="password" onChange={(e) => onChangeHandler(e)} />
+                                            <Form.Control type="password" placeholder="Insert password" name="password" onChange={(e) => onChangeHandler(e)} />
                                             <Form.Text className="text-muted">
                                                 make sure password is correct.
                             </Form.Text>
