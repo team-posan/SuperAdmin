@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "./addProduct";
 import Swal from "sweetalert2";
 import EditProduct from "./editProductModal";
@@ -7,11 +7,30 @@ import { deleteProduct } from "../store/action/Product-action";
 import { fetchProduct } from "../store/action/Product-action";
 import { Button } from 'react-bootstrap'
 import "./ListProduct.css"
+import { fetchStore } from '../store/action/Store-action'
+import { useSelector} from 'react-redux'
+import { Redirect } from 'react-router-dom'
+
 
 function ListProduct(props) {
+
+  //redux
   const dispatch = useDispatch();
+
+  // antd
   const { product_name, price, image_url, stock, StoreId, id } = props.product;
+
+
+  // reducers
+  const storeReducer = useSelector((state) => state.storeReducer);
+  const auth = useSelector((state) => state.loginReducer);
+  //modal
   const [isOpen, setIsOpen] = useState(false);
+  
+  useEffect(()=>{
+    dispatch(fetchStore())
+  },[])
+
   const showModal = () => {
     setIsOpen(true);
   };
@@ -43,14 +62,24 @@ function ListProduct(props) {
         console.log(err);
       });
   };
+
+  const filterStore=()=>{
+      let filterd = storeReducer.dataStore.filter(val=>val.id == StoreId)
+      return filterd[0].store_name
+  }
+
+  if (!auth.loginStatus) return <Redirect to={"/login"} />;
+
+  if (storeReducer.loadingStore) return <div>Loading...</div>;
+
   return (
     <tr>
       <th scope="row">{props.index + 1}</th>
       <td>{product_name}</td>
       <td>{price}</td>
-      <td>{image_url}</td>
+      <td style={{maxWidth:'600px', overflow:'hidden'}}><a style={{color:'black'}} href={`${image_url}`} target='_blank'>View Image Here</a></td>
       <td>{stock}</td>
-      <td>{StoreId}</td>
+      <td>{filterStore()}</td>
       <td>
         <Button onClick={showModal} className="add-btn">
           Edit

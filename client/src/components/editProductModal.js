@@ -26,7 +26,6 @@ function EditStock(props) {
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
-    // console.log(value);
     setEditData({ ...editData, [name]: value });
   };
 
@@ -35,8 +34,6 @@ function EditStock(props) {
     dispatch(editProduct(editData));
     hideModal();
   };
-
-  console.log(editData);
 
 
   if (!auth.loginStatus) return <Redirect to={"/login"} />;

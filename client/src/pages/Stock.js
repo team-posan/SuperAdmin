@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Table, Spinner } from "react-bootstrap";
 import ListProduct from "../components/ListProduct";
 import AddStock from "../components/addProduct";
 import "./Stock.css";
@@ -38,12 +38,12 @@ function Stock() {
       <Table striped bordered  variant="light">
         <thead className="color">
           <tr>
-            <th scope="col">Bo</th>
+            <th scope="col">No</th>
             <th scope="col">Product Name</th>
             <th scope="col">Price</th>
             <th scope="col">Img-url</th>
             <th scope="col">Stock</th>
-            <th scope="col">StoreID</th>
+            <th scope="col">Store</th>
             <th scope="col">Action</th>
           </tr>
         </thead>

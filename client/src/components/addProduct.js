@@ -22,7 +22,6 @@ function AddStock(props) {
     dispatch(fetchStore())
   },[])
 
-  console.log(dataAdd);
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
@@ -33,7 +32,6 @@ function AddStock(props) {
     dispatch(addProduct(dataAdd));
     hideModal();
   };
-  console.log(storeReducer)
   if (!auth.loginStatus) return <Redirect to={"/login"} />;
 
   if (storeReducer.loadingStore) return <div>Loading...</div>;
